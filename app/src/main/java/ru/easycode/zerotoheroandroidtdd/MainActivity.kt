@@ -17,12 +17,6 @@ import kotlin.coroutines.coroutineContext
 
 class MainActivity : AppCompatActivity() {
 
-    private fun delay(time:Long, block:()->Unit){
-        lifecycleScope.launch {
-            delay(time)
-            block()
-        }
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
