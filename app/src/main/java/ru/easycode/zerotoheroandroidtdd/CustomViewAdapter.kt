@@ -2,17 +2,20 @@ package ru.easycode.zerotoheroandroidtdd
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import ru.easycode.zerotoheroandroidtdd.databinding.TextItemBinding
-import java.util.zip.Inflater
 
 class CustomViewAdapter:RecyclerView.Adapter<CustomViewHolder>() {
 
     private var data :ArrayList<CharSequence> = ArrayList()
+
     fun setData(list:ArrayList<CharSequence>){
-        data = list
-        //notifyItemRangeChanged(0,list.size)
-        notifyDataSetChanged()
+        val du = DiffUtil(data,list)
+        val diff = DiffUtil.calculateDiff(du)
+        data.clear()
+        data.addAll(list)
+        diff.dispatchUpdatesTo(this)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
@@ -29,4 +32,26 @@ class CustomViewAdapter:RecyclerView.Adapter<CustomViewHolder>() {
         val item = data[position]
         holder.bind(item)
     }
+}
+
+private class DiffUtil(
+    private val old:ArrayList<CharSequence>,
+    private val new:ArrayList<CharSequence>):DiffUtil.Callback(){
+
+    override fun getOldListSize(): Int {
+        return old.size
+    }
+
+    override fun getNewListSize(): Int {
+        return new.size
+    }
+
+    override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+        return  old[oldItemPosition] == new[newItemPosition]
+    }
+
+    override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+        return  old[oldItemPosition] == new[newItemPosition]
+    }
+
 }
