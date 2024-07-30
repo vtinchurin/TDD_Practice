@@ -25,4 +25,14 @@ class MainActivity : AppCompatActivity() {
             binding.inputEditText.setText("")
         }
     }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putStringArrayList("key",adapter.getData())
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        savedInstanceState.getStringArrayList("key")?.let { adapter.setData(it) }
+    }
 }

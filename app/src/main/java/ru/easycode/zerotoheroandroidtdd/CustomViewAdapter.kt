@@ -9,6 +9,15 @@ class CustomViewAdapter:RecyclerView.Adapter<CustomViewHolder>() {
 
     private var data = ArrayList<String>()
 
+    fun getData():ArrayList<String>{
+        return this.data
+    }
+
+    fun setData (data : ArrayList<String>){
+        this.data = data
+        notifyItemRangeChanged(0,data.size)
+    }
+
     fun addItem(newData:String){
         data.add(newData)
         notifyItemInserted(data.size-1)
