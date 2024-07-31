@@ -13,7 +13,6 @@ class ListViewModel(
 ) : ViewModel(), ListLiveDataWrapper.Read {
 
     fun create() {
-        Log.e("logging", "Create fun in LVM")
         navigation.update(CreateScreen)
     }
 

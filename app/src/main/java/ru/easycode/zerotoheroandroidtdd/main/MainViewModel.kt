@@ -11,7 +11,6 @@ class MainViewModel(
 ) : ViewModel(),Navigation.Read {
 
     fun init(firstRun: Boolean) {
-        Log.e("logging", "Init MVM")
         if (firstRun) navigation.update(ListScreen)
     }
 

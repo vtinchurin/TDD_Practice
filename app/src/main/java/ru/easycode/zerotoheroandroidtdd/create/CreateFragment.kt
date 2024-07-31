@@ -25,15 +25,20 @@ class CreateFragment : AbstractFragment<CreateFrameBinding>() {
         return binding.root
     }
 
+    private lateinit var viewModel:CreateViewModel
+
+    private val onBackPressedCallback = object : OnBackPressedCallback(true){
+        override fun handleOnBackPressed() {
+            viewModel.comeback()
+        }
+
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val viewModel = (activity as ProvideViewModel).viewModel(CreateViewModel::class.java)
+        viewModel = (activity as ProvideViewModel).viewModel(CreateViewModel::class.java)
 
-        requireActivity().onBackPressedDispatcher.addCallback(object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                viewModel.comeback()
-            }
-        })
+        requireActivity().onBackPressedDispatcher.addCallback(onBackPressedCallback)
 
         binding.inputEditText.addTextChangedListener {
             binding.createButton.isEnabled = it.toString().length > 2
@@ -44,6 +49,11 @@ class CreateFragment : AbstractFragment<CreateFrameBinding>() {
             viewModel.add(binding.inputEditText.text.toString())
         }
 
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        onBackPressedCallback.remove()
     }
 
 

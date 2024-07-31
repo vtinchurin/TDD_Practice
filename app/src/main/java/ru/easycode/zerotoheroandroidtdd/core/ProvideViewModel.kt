@@ -14,13 +14,11 @@ interface ProvideViewModel {
     fun <T : ViewModel> viewModel(viewModelClass: Class<T>): T
 
     class Base(
-        private val navigation: Navigation.Mutable,
         private val clearViewModel: ClearViewModel,
     ) : ProvideViewModel {
-        //private val navigation = Navigation.Base()
+        private val navigation = Navigation.Base()
         private val listDataWrapper = ListLiveDataWrapper.Base()
         override fun <T : ViewModel> viewModel(viewModelClass: Class<T>): T {
-            Log.e("logging", "Base ProvideVM fun ")
             return when (viewModelClass){
                 MainViewModel::class.java -> MainViewModel(navigation)
                 CreateViewModel::class.java -> CreateViewModel(listDataWrapper,navigation,clearViewModel)

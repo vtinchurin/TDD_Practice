@@ -1,5 +1,6 @@
 package ru.easycode.zerotoheroandroidtdd.core
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import ru.easycode.zerotoheroandroidtdd.main.Navigation
 
@@ -15,6 +16,7 @@ interface ViewModelFactory : ProvideViewModel, ClearViewModel {
             if (cache.containsKey(viewModelClass)) {
                 return cache[viewModelClass] as T
             } else {
+                Log.d("qwe","getVM")
                 val vm = provideViewModel.viewModel(viewModelClass)
                 cache[viewModelClass] = vm
                 return vm
@@ -23,6 +25,7 @@ interface ViewModelFactory : ProvideViewModel, ClearViewModel {
         }
 
         override fun clear(viewModelClass: Class<out ViewModel>) {
+            Log.d("qwe","removeVM")
             cache.remove(viewModelClass)
         }
     }

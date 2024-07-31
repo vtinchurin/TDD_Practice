@@ -20,6 +20,6 @@ class CreateViewModel(
 
     fun comeback() {
         navigation.update(Screen.Pop)
-        clearViewModel.clear(this::class.java)
+        clearViewModel.clear(CreateViewModel::class.java)
     }
 }
