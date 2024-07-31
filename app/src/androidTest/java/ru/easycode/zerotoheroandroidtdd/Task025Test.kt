@@ -53,6 +53,7 @@ class Task025Test {
         listPage.clickAddButton()
 
         val createPage = CreatePage()
+        listPage.checkNotVisibleNow()
         createPage.checkVisibleNow()
     }
 

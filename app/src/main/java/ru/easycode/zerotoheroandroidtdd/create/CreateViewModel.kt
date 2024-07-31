@@ -10,7 +10,7 @@ import ru.easycode.zerotoheroandroidtdd.main.Screen
 class CreateViewModel(
     private val addLiveDataWrapper: ListLiveDataWrapper.Add,
     private val navigation: Navigation.Update,
-    //private val clearViewModel: ClearViewModel,
+    private val clearViewModel: ClearViewModel,
 ) : ViewModel() {
 
     fun add(text: String) {
@@ -19,6 +19,7 @@ class CreateViewModel(
     }
 
     fun comeback() {
-        navigation.update(ListScreen)
+        navigation.update(Screen.Pop)
+        clearViewModel.clear(this::class.java)
     }
 }

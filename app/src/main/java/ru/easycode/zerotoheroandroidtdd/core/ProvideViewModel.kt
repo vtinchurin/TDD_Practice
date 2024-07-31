@@ -1,5 +1,6 @@
 package ru.easycode.zerotoheroandroidtdd.core
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import ru.easycode.zerotoheroandroidtdd.create.CreateViewModel
 import ru.easycode.zerotoheroandroidtdd.list.ListLiveDataWrapper
@@ -12,16 +13,23 @@ interface ProvideViewModel {
 
     fun <T : ViewModel> viewModel(viewModelClass: Class<T>): T
 
-    class Base : ProvideViewModel {
-        private val navigation = Navigation.Base()
+    class Base(
+        private val navigation: Navigation.Mutable,
+        private val clearViewModel: ClearViewModel,
+    ) : ProvideViewModel {
+        //private val navigation = Navigation.Base()
+        private val listDataWrapper = ListLiveDataWrapper.Base()
         override fun <T : ViewModel> viewModel(viewModelClass: Class<T>): T {
+            Log.e("logging", "Base ProvideVM fun ")
             return when (viewModelClass){
                 MainViewModel::class.java -> MainViewModel(navigation)
-                CreateViewModel::class.java -> CreateViewModel(ListLiveDataWrapper.Base(),navigation)
-                ListViewModel::class.java -> ListViewModel(ListLiveDataWrapper.Base(),navigation)
+                CreateViewModel::class.java -> CreateViewModel(listDataWrapper,navigation,clearViewModel)
+                ListViewModel::class.java -> ListViewModel(listDataWrapper,navigation)
                 else -> throw IllegalStateException("error")
             } as T
         }
+
+
 
     }
 }

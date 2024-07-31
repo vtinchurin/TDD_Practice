@@ -1,11 +1,12 @@
 package ru.easycode.zerotoheroandroidtdd.core
 
 import androidx.lifecycle.ViewModel
+import ru.easycode.zerotoheroandroidtdd.main.Navigation
 
 interface ViewModelFactory : ProvideViewModel, ClearViewModel {
 
     class Base(
-        private val provideViewModel: ProvideViewModel
+        private val provideViewModel: ProvideViewModel,
     ) : ViewModelFactory {
 
         private val cache: MutableMap<Class<out ViewModel>, ViewModel> = mutableMapOf()

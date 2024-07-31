@@ -1,5 +1,6 @@
 package ru.easycode.zerotoheroandroidtdd.list
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import ru.easycode.zerotoheroandroidtdd.core.LiveDataWrapper
@@ -12,6 +13,7 @@ class ListViewModel(
 ) : ViewModel(), ListLiveDataWrapper.Read {
 
     fun create() {
+        Log.e("logging", "Create fun in LVM")
         navigation.update(CreateScreen)
     }
 
