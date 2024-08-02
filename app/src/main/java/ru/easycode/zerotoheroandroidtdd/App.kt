@@ -13,14 +13,17 @@ class App:Application(),ProvideViewModel {
 
     private lateinit var factory : ViewModelFactory
     private lateinit var provideViewModel:ProvideViewModel
-    private val clear : ClearViewModel  = object ClearViewModel() {
+    private val clear : ClearViewModel  = object : ClearViewModel {
+        override fun clearViewModel(clasz: Class<out ViewModel>) {
+            factory.clearViewModel(clasz)
+        }
 
     }
 
     override fun onCreate() {
         super.onCreate()
-
-        factory = ViewModelFactory.Base()
+        provideViewModel = ProvideViewModel.Base(clear, build().itemsDao())
+        factory = ViewModelFactory.Base(provideViewModel)
     }
 
 

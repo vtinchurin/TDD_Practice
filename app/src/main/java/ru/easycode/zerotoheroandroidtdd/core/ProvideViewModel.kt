@@ -2,11 +2,15 @@ package ru.easycode.zerotoheroandroidtdd.core
 
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.Dispatchers
+import ru.easycode.zerotoheroandroidtdd.data.dao.ItemsDao
+import ru.easycode.zerotoheroandroidtdd.data.repository.Now
+import ru.easycode.zerotoheroandroidtdd.data.repository.RepositoryImpl
 import ru.easycode.zerotoheroandroidtdd.domain.repository.Repository
 import ru.easycode.zerotoheroandroidtdd.presentation.AddViewModel
 import ru.easycode.zerotoheroandroidtdd.presentation.ListC
 import ru.easycode.zerotoheroandroidtdd.presentation.ListLiveDataWrapper
 import ru.easycode.zerotoheroandroidtdd.presentation.MainViewModel
+import javax.sql.DataSource
 
 interface ProvideViewModel {
 
@@ -14,8 +18,9 @@ interface ProvideViewModel {
 
     class Base(
         private val clear:ClearViewModel,
-        private val repository: Repository.Mutable,
+        private val dataSource: ItemsDao
     ):ProvideViewModel {
+        private val repository = RepositoryImpl(dataSource)
         private val liveDataWrapper = ListLiveDataWrapper.Base()
         override fun <T : ViewModel> viewModel(viewModelClass: Class<T>): T {
             return when (viewModelClass){

@@ -12,9 +12,9 @@ class RepositoryTest {
 
     @Test
     fun test() {
-        val now = FakeNow.Base(7777L)
+        //val now = FakeNow.Base(7777L)
         val dataSource = FakeDataSource.Base()
-        val repository: Repository.Mutable = RepositoryImpl(localDataSource = dataSource, now = now)
+        val repository: Repository.Mutable = RepositoryImpl(localDataSource = dataSource)
 
         dataSource.expectList(
             listOf(
