@@ -1,18 +1,31 @@
 package ru.easycode.zerotoheroandroidtdd.core
 
 import androidx.lifecycle.ViewModel
+import kotlinx.coroutines.Dispatchers
+import ru.easycode.zerotoheroandroidtdd.domain.repository.Repository
+import ru.easycode.zerotoheroandroidtdd.presentation.ListLiveDataWrapper
 import ru.easycode.zerotoheroandroidtdd.presentation.MainViewModel
 
 interface ProvideViewModel {
 
-    fun <T: ViewModel> viewModel(viewModelClass: Class<out T>):T
+    fun <T: ViewModel> viewModel(viewModelClass: Class<T>):T
 
-    class Base():ProvideViewModel {
+    class Base(
+        private val repository: Repository.Mutable,
+    ):ProvideViewModel {
+        private val liveDataWrapper = ListLiveDataWrapper.Base()
+        override fun <T : ViewModel> viewModel(viewModelClass: Class<T>): T {
+            return when (viewModelClass){
+                MainViewModel::class.java -> MainViewModel(
+                    repository = repository,
+                    liveDataWrapper = liveDataWrapper,
+                    dispatcher = Dispatchers.IO,
+                    dispatcherMain = Dispatchers.Main)
 
-        override fun <T : ViewModel> viewModel(viewModelClass: Class<out T>): T {
-            when (viewModelClass){
-                MainViewModel::class.java -> MainViewModel(repository = )
-            }
+                else -> {
+                    throw IllegalStateException()
+                }
+            } as T
         }
     }
 }
