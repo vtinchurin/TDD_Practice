@@ -1,6 +1,7 @@
 package ru.easycode.zerotoheroandroidtdd.core
 
 import androidx.lifecycle.ViewModel
+import ru.easycode.zerotoheroandroidtdd.presentation.MainViewModel
 
 interface ProvideViewModel {
 
@@ -8,10 +9,10 @@ interface ProvideViewModel {
 
     class Base():ProvideViewModel {
 
-        private val map = mutableMapOf<Class<out ViewModel>,ViewModel>()
-
         override fun <T : ViewModel> viewModel(viewModelClass: Class<out T>): T {
-            return  map[viewModelClass]
+            when (viewModelClass){
+                MainViewModel::class.java -> MainViewModel(repository = )
+            }
         }
     }
 }

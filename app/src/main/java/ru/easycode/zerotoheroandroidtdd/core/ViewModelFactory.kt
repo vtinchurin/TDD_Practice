@@ -7,8 +7,12 @@ interface ViewModelFactory:ProvideViewModel {
     class Base(
         private val provide:ProvideViewModel,
     ):ViewModelFactory {
+
+        private val cache : MutableMap<Class<out ViewModel>,ViewModel> = mutableMapOf()
         override fun <T : ViewModel> viewModel(viewModelClass: Class<out T>): T {
-            return provide.viewModel(viewModelClass)
+            if (cache.containsKey(viewModelClass)) {
+                return cache[viewModelClass]
+            }else return provide.viewModel(viewModelClass)
         }
     }
 }
