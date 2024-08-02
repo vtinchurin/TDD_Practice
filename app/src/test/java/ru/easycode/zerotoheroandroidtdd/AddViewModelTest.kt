@@ -4,7 +4,9 @@ import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.Dispatchers
 import org.junit.Assert.assertEquals
 import org.junit.Test
-import ru.easycode.zerotoheroandroidtdd.data.repository.Repository
+import ru.easycode.zerotoheroandroidtdd.domain.repository.Repository
+import ru.easycode.zerotoheroandroidtdd.presentation.AddViewModel
+import ru.easycode.zerotoheroandroidtdd.presentation.ListC
 
 class AddViewModelTest {
 
@@ -87,7 +89,7 @@ private interface FakeClearViewModel : ClearViewModel {
     }
 }
 
-private interface FakeAddLiveDataWrapper : ListLiveDataWrapper.Add {
+private interface FakeAddLiveDataWrapper : ListC.Add {
 
     fun checkAddCalled(expected: String)
 

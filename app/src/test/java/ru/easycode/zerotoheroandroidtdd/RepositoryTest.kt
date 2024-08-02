@@ -5,7 +5,8 @@ import org.junit.Test
 import ru.easycode.zerotoheroandroidtdd.data.dao.ItemsDao
 import ru.easycode.zerotoheroandroidtdd.data.model.ItemCache
 import ru.easycode.zerotoheroandroidtdd.data.repository.Now
-import ru.easycode.zerotoheroandroidtdd.data.repository.Repository
+import ru.easycode.zerotoheroandroidtdd.data.repository.RepositoryImpl
+import ru.easycode.zerotoheroandroidtdd.domain.repository.Repository
 
 class RepositoryTest {
 
@@ -13,7 +14,7 @@ class RepositoryTest {
     fun test() {
         val now = FakeNow.Base(7777L)
         val dataSource = FakeDataSource.Base()
-        val repository: Repository.Mutable = Repository.Base(dataSource = dataSource, now = now)
+        val repository: Repository.Mutable = RepositoryImpl(localDataSource = dataSource, now = now)
 
         dataSource.expectList(
             listOf(
