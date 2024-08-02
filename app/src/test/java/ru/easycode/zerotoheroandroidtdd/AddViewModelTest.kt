@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.Dispatchers
 import org.junit.Assert.assertEquals
 import org.junit.Test
+import ru.easycode.zerotoheroandroidtdd.core.ClearViewModel
 import ru.easycode.zerotoheroandroidtdd.domain.repository.Repository
 import ru.easycode.zerotoheroandroidtdd.presentation.AddViewModel
 import ru.easycode.zerotoheroandroidtdd.presentation.ListC
