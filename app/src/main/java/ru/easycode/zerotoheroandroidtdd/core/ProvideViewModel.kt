@@ -13,6 +13,7 @@ interface ProvideViewModel {
     fun <T: ViewModel> viewModel(viewModelClass: Class<T>):T
 
     class Base(
+        private val clear:ClearViewModel,
         private val repository: Repository.Mutable,
     ):ProvideViewModel {
         private val liveDataWrapper = ListLiveDataWrapper.Base()
@@ -26,7 +27,9 @@ interface ProvideViewModel {
                 AddViewModel::class.java -> AddViewModel(
                     repository = repository,
                     liveDataWrapper = ListC.Base(),
-                    clear = ClearViewModel
+                    clear = clear,
+                    dispatcher = Dispatchers.IO,
+                    dispatcherMain = Dispatchers.Main
                 )
                 else -> {
                     throw IllegalStateException()
