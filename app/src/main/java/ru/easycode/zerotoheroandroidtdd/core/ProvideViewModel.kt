@@ -3,6 +3,8 @@ package ru.easycode.zerotoheroandroidtdd.core
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.Dispatchers
 import ru.easycode.zerotoheroandroidtdd.domain.repository.Repository
+import ru.easycode.zerotoheroandroidtdd.presentation.AddViewModel
+import ru.easycode.zerotoheroandroidtdd.presentation.ListC
 import ru.easycode.zerotoheroandroidtdd.presentation.ListLiveDataWrapper
 import ru.easycode.zerotoheroandroidtdd.presentation.MainViewModel
 
@@ -21,7 +23,11 @@ interface ProvideViewModel {
                     liveDataWrapper = liveDataWrapper,
                     dispatcher = Dispatchers.IO,
                     dispatcherMain = Dispatchers.Main)
-
+                AddViewModel::class.java -> AddViewModel(
+                    repository = repository,
+                    liveDataWrapper = ListC.Base(),
+                    clear = ClearViewModel
+                )
                 else -> {
                     throw IllegalStateException()
                 }
