@@ -13,10 +13,8 @@ class App:Application(),ProvideViewModel {
 
     private lateinit var factory : ViewModelFactory
     private lateinit var provideViewModel:ProvideViewModel
-    private object clear : ClearViewModel {
-        override fun clearViewModel(clasz: Class<out ViewModel>) {
-            TODO("Not yet implemented")
-        }
+    private val clear : ClearViewModel  = object ClearViewModel() {
+
     }
 
     override fun onCreate() {
