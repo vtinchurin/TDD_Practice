@@ -1,6 +1,7 @@
 package ru.easycode.zerotoheroandroidtdd
 
 import android.os.Bundle
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
 import ru.easycode.zerotoheroandroidtdd.core.ProvideViewModel
@@ -30,6 +31,6 @@ class MainActivity : AppCompatActivity(),ProvideViewModel {
     }
 
     override fun <T : ViewModel> viewModel(viewModelClass: Class<T>): T {
-        return (application as App).viewModel(viewModelClass)
+        return (application as ProvideViewModel).viewModel(viewModelClass)
     }
 }

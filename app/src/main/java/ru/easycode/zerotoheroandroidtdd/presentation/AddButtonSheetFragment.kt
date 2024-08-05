@@ -33,7 +33,7 @@ class AddButtonSheetFragment:BottomSheetDialogFragment(R.layout.add_fragment) {
         super.onViewCreated(view, savedInstanceState)
         val input = view.findViewById<TextInputEditText>(R.id.addInputEditText)
 
-        view.findViewById<Button>(R.id.addButton).setOnClickListener {
+        view.findViewById<Button>(R.id.saveButton).setOnClickListener {
             viewModel.add(input.text.toString())
             dismiss()
         }
