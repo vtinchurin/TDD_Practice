@@ -2,13 +2,10 @@ package ru.easycode.zerotoheroandroidtdd.presentation
 
 import ru.easycode.zerotoheroandroidtdd.core.LiveDataWrapper
 
-interface ListC {
+interface ListC:ListLiveDataWrapper.Add {
 
-    interface Add:LiveDataWrapper.Add<String>
-
-    class Base():Add {
-        override fun add(value: String) {
-            TODO("Not yet implemented")
-        }
+    interface Add:ListC{
+        override fun add(value:String)
     }
+
 }

@@ -8,6 +8,7 @@ import ru.easycode.zerotoheroandroidtdd.core.ClearViewModel
 import ru.easycode.zerotoheroandroidtdd.core.ProvideViewModel
 import ru.easycode.zerotoheroandroidtdd.core.ViewModelFactory
 import ru.easycode.zerotoheroandroidtdd.data.dao.ItemsDataBase
+import ru.easycode.zerotoheroandroidtdd.data.repository.Now
 
 class App:Application(),ProvideViewModel {
 
@@ -22,7 +23,7 @@ class App:Application(),ProvideViewModel {
 
     override fun onCreate() {
         super.onCreate()
-        provideViewModel = ProvideViewModel.Base(clear, build().itemsDao())
+        provideViewModel = ProvideViewModel.Base(clear, build().itemsDao(),Now.Base())
         factory = ViewModelFactory.Base(provideViewModel)
     }
 
@@ -37,7 +38,8 @@ class App:Application(),ProvideViewModel {
         fun build(): ItemsDataBase {
             val db = Room.databaseBuilder(
                 getApplicationContext(),
-                ItemsDataBase::class.java, "database"
+                ItemsDataBase::class.java,
+                "database"
             ).build()
 
             return db

@@ -6,8 +6,8 @@ import androidx.room.PrimaryKey
 
 @Entity("items")
 data class ItemCache(
-    @PrimaryKey val id: Long,
-    @ColumnInfo(name = "text")val text: String?,
+    @PrimaryKey @ColumnInfo (name = "id")val id: Long,
+    @ColumnInfo(name = "text")val text: String,
 )
 
 

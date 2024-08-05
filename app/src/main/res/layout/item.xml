@@ -4,6 +4,7 @@
     android:textSize="16dp"
     tools:text="Test text"
     android:layout_margin="12dp"
+    android:background="@drawable/text_bg"
     android:id="@+id/elementTextView"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">

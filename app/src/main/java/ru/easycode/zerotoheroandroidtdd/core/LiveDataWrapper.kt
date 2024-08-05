@@ -13,10 +13,6 @@ interface LiveDataWrapper {
         fun liveData(): LiveData<T>
     }
 
-    interface Add<T:Any>{
-        fun add(value:T)
-    }
-
     interface Mutable<T : Any> : Read<T>, Update<T>
 
     abstract class Abstract<T : Any>(
@@ -28,7 +24,9 @@ interface LiveDataWrapper {
         }
 
         override fun update(value: T) {
-            liveData.value = value
+            liveData.postValue(value)
         }
+
+
     }
 }

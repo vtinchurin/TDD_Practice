@@ -18,23 +18,25 @@ interface ProvideViewModel {
 
     class Base(
         private val clear:ClearViewModel,
-        private val dataSource: ItemsDao
+        dataSource: ItemsDao,
+        now:Now,
     ):ProvideViewModel {
-        private val repository = RepositoryImpl(dataSource)
+
+        private val repository = RepositoryImpl(dataSource,now)
         private val liveDataWrapper = ListLiveDataWrapper.Base()
         override fun <T : ViewModel> viewModel(viewModelClass: Class<T>): T {
             return when (viewModelClass){
                 MainViewModel::class.java -> MainViewModel(
                     repository = repository,
-                    liveDataWrapper = liveDataWrapper,
-                    dispatcher = Dispatchers.IO,
-                    dispatcherMain = Dispatchers.Main)
+                    liveDataWrapper = liveDataWrapper,)
+                    //dispatcher = Dispatchers.IO,
+                    //dispatcherMain = Dispatchers.Main)
                 AddViewModel::class.java -> AddViewModel(
                     repository = repository,
-                    liveDataWrapper = ListC.Base(),
+                    liveDataWrapper = liveDataWrapper,
                     clear = clear,
-                    dispatcher = Dispatchers.IO,
-                    dispatcherMain = Dispatchers.Main
+//                    dispatcher = Dispatchers.IO,
+//                    dispatcherMain = Dispatchers.Main
                 )
                 else -> {
                     throw IllegalStateException()
