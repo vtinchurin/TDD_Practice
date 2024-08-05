@@ -16,6 +16,7 @@ class App:Application(),ProvideViewModel {
 
     private lateinit var factory : ViewModelFactory
     private lateinit var provideViewModel:ProvideViewModel
+    lateinit var db:Core
     private val clear : ClearViewModel  = object : ClearViewModel {
         override fun clearViewModel(clasz: Class<out ViewModel>) {
             factory.clearViewModel(clasz)
@@ -25,9 +26,10 @@ class App:Application(),ProvideViewModel {
 
     override fun onCreate() {
         super.onCreate()
-        val core = Core(this.applicationContext)
-        provideViewModel = ProvideViewModel.Base(clear, core.dao(),Now.Base())
+        val db = Core(this.applicationContext)
+        provideViewModel = ProvideViewModel.Base(clear, db.dao(),Now.Base())
         factory = ViewModelFactory.Base(provideViewModel)
+
     }
 
 
@@ -35,5 +37,7 @@ class App:Application(),ProvideViewModel {
     override fun <T : ViewModel> viewModel(viewModelClass: Class<T>): T {
         return factory.viewModel(viewModelClass)
     }
+
+
 
 }

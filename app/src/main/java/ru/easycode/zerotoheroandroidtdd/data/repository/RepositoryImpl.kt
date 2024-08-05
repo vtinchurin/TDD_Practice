@@ -15,6 +15,10 @@ class RepositoryImpl(
         }
     }
 
+    override fun clear() {
+        localDataSource.clear()
+    }
+
     override fun add(value: String) {
         localDataSource.add(
             ItemCache(

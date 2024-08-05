@@ -7,7 +7,7 @@ import ru.easycode.zerotoheroandroidtdd.data.dao.ItemsDao
 import ru.easycode.zerotoheroandroidtdd.data.dao.ItemsDataBase
 
 class Core(
-    val context: Context
+    private val context: Context
 ) {
     fun build(): ItemsDataBase {
         val db = Room.databaseBuilder(
@@ -21,5 +21,9 @@ class Core(
 
     fun dao():ItemsDao{
         return build().itemsDao()
+    }
+
+    fun clear(){
+        this.clear()
     }
 }
