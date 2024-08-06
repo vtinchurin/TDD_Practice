@@ -1,4 +1,4 @@
-package ru.easycode.zerotoheroandroidtdd.presentation
+package ru.easycode.zerotoheroandroidtdd.presentation.main_screen
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,12 +6,12 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import ru.easycode.zerotoheroandroidtdd.databinding.ItemDataBinding
 
-class Adapter:RecyclerView.Adapter<ViewHolder>() {
+class Adapter : RecyclerView.Adapter<ViewHolder>() {
 
     private var data = listOf<String>()
 
-    fun update(list:List<String>){
-        val du = DiffUtilUsage(data,list)
+    fun update(list: List<String>) {
+        val du = DiffUtilUsage(data, list)
         val diff = DiffUtil.calculateDiff(du)
         data = ArrayList(list)
         diff.dispatchUpdatesTo(this)
@@ -33,9 +33,9 @@ class Adapter:RecyclerView.Adapter<ViewHolder>() {
 }
 
 private class DiffUtilUsage(
-    private val old:List<CharSequence>,
-    private val new:List<CharSequence>
-): DiffUtil.Callback() {
+    private val old: List<CharSequence>,
+    private val new: List<CharSequence>
+) : DiffUtil.Callback() {
     override fun getOldListSize() = old.size
 
 

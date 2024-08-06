@@ -1,10 +1,11 @@
-package ru.easycode.zerotoheroandroidtdd.presentation
+package ru.easycode.zerotoheroandroidtdd.presentation.add_screen
 
 import android.app.Dialog
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import androidx.activity.OnBackPressedCallback
+import androidx.core.widget.addTextChangedListener
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.textfield.TextInputEditText
@@ -32,6 +33,10 @@ class AddButtonSheetFragment:BottomSheetDialogFragment(R.layout.add_fragment) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val input = view.findViewById<TextInputEditText>(R.id.addInputEditText)
+
+        view.findViewById<TextInputEditText>(R.id.addInputEditText).addTextChangedListener {
+            if (it?.length!! > 0) view.findViewById<Button>(R.id.saveButton).isEnabled = true
+        }
 
         view.findViewById<Button>(R.id.saveButton).setOnClickListener {
             viewModel.add(input.text.toString())

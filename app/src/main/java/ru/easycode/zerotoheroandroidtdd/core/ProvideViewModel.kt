@@ -1,16 +1,12 @@
 package ru.easycode.zerotoheroandroidtdd.core
 
 import androidx.lifecycle.ViewModel
-import kotlinx.coroutines.Dispatchers
 import ru.easycode.zerotoheroandroidtdd.data.dao.ItemsDao
 import ru.easycode.zerotoheroandroidtdd.data.repository.Now
 import ru.easycode.zerotoheroandroidtdd.data.repository.RepositoryImpl
-import ru.easycode.zerotoheroandroidtdd.domain.repository.Repository
-import ru.easycode.zerotoheroandroidtdd.presentation.AddViewModel
-import ru.easycode.zerotoheroandroidtdd.presentation.ListC
-import ru.easycode.zerotoheroandroidtdd.presentation.ListLiveDataWrapper
-import ru.easycode.zerotoheroandroidtdd.presentation.MainViewModel
-import javax.sql.DataSource
+import ru.easycode.zerotoheroandroidtdd.presentation.add_screen.AddViewModel
+import ru.easycode.zerotoheroandroidtdd.presentation.main_screen.ListLiveDataWrapper
+import ru.easycode.zerotoheroandroidtdd.presentation.main_screen.MainViewModel
 
 interface ProvideViewModel {
 

@@ -1,17 +1,13 @@
 package ru.easycode.zerotoheroandroidtdd
 
 import android.os.Bundle
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
-import androidx.recyclerview.widget.LinearLayoutManager
-import ru.easycode.zerotoheroandroidtdd.core.Core
 import ru.easycode.zerotoheroandroidtdd.core.ProvideViewModel
-import ru.easycode.zerotoheroandroidtdd.data.dao.ItemsDataBase
 import ru.easycode.zerotoheroandroidtdd.databinding.ActivityMainBinding
-import ru.easycode.zerotoheroandroidtdd.presentation.Adapter
-import ru.easycode.zerotoheroandroidtdd.presentation.AddScreen
-import ru.easycode.zerotoheroandroidtdd.presentation.MainViewModel
+import ru.easycode.zerotoheroandroidtdd.presentation.add_screen.AddScreen
+import ru.easycode.zerotoheroandroidtdd.presentation.main_screen.Adapter
+import ru.easycode.zerotoheroandroidtdd.presentation.main_screen.MainViewModel
 
 class MainActivity : AppCompatActivity(),ProvideViewModel {
 

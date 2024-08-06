@@ -10,10 +10,7 @@ interface Repository {
         fun add(value:String)
     }
 
-    interface Clear{
-        fun clear()
-    }
 
-    interface Mutable:Add,Read,Clear
+    interface Mutable : Add, Read
 
 }

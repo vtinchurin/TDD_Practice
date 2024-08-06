@@ -1,4 +1,4 @@
-package ru.easycode.zerotoheroandroidtdd.presentation
+package ru.easycode.zerotoheroandroidtdd.presentation.main_screen
 
 import ru.easycode.zerotoheroandroidtdd.core.LiveDataWrapper
 
@@ -6,10 +6,11 @@ interface ListLiveDataWrapper {
 
     interface Read : LiveDataWrapper.Read<List<String>>
     interface Update : LiveDataWrapper.Update<List<String>>
-    interface Add{
-        fun add(value:String)
+    interface Add {
+        fun add(value: String)
     }
-    interface All:Mutable,Add
+
+    interface All : Mutable, Add
     interface Mutable : Read, Update
 
     class Base : All, LiveDataWrapper.Abstract<List<String>>() {
@@ -21,4 +22,3 @@ interface ListLiveDataWrapper {
         }
     }
 }
-

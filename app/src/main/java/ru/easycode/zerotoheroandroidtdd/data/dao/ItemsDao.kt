@@ -1,8 +1,6 @@
 package ru.easycode.zerotoheroandroidtdd.data.dao
 
 import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.DeleteTable
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -15,6 +13,4 @@ interface ItemsDao {
     fun list(): List<ItemCache>
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun add(item: ItemCache)
-    @Query("DELETE FROM items")
-    fun clear()
 }

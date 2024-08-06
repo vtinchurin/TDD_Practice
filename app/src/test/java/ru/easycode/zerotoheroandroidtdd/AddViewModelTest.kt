@@ -6,8 +6,8 @@ import org.junit.Assert.assertEquals
 import org.junit.Test
 import ru.easycode.zerotoheroandroidtdd.core.ClearViewModel
 import ru.easycode.zerotoheroandroidtdd.domain.repository.Repository
-import ru.easycode.zerotoheroandroidtdd.presentation.AddViewModel
-import ru.easycode.zerotoheroandroidtdd.presentation.ListC
+import ru.easycode.zerotoheroandroidtdd.presentation.add_screen.AddViewModel
+import ru.easycode.zerotoheroandroidtdd.presentation.add_screen.ListC
 
 class AddViewModelTest {
 

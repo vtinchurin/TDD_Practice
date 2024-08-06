@@ -5,8 +5,8 @@ import kotlinx.coroutines.Dispatchers
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import ru.easycode.zerotoheroandroidtdd.domain.repository.Repository
-import ru.easycode.zerotoheroandroidtdd.presentation.ListLiveDataWrapper
-import ru.easycode.zerotoheroandroidtdd.presentation.MainViewModel
+import ru.easycode.zerotoheroandroidtdd.presentation.main_screen.ListLiveDataWrapper
+import ru.easycode.zerotoheroandroidtdd.presentation.main_screen.MainViewModel
 
 class MainViewModelTest {
 
