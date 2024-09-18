@@ -32,6 +32,7 @@ class RoomTest {
         dao = db.itemsDao()
     }
 
+    //
     @After
     @Throws(IOException::class)
     fun clear() {

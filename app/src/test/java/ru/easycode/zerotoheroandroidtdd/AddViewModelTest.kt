@@ -1,15 +1,15 @@
-//package ru.easycode.zerotoheroandroidtdd
-//
-//import kotlinx.coroutines.Dispatchers
-//import org.junit.Assert.assertEquals
-//import org.junit.Test
+package ru.easycode.zerotoheroandroidtdd
+
+import org.junit.Assert.assertEquals
+
 //import ru.easycode.zerotoheroandroidtdd.FakeClearViewModel.Companion.CLEAR
+//import ru.easycode.zerotoheroandroidtdd.domain.Repository
 //
 //class AddViewModelTest {
 //
 //    @Test
 //    fun test_add() {
-//        val order = Order()
+//        val order = ru.easycode.zerotoheroandroidtdd.Order()
 //        val repository = FakeAddRepository.Base(order)
 //        val liveDataWrapper = FakeAddLiveDataWrapper.Base(order)
 //        val clear = FakeClearViewModel.Base(order)
@@ -33,7 +33,7 @@
 //
 //    @Test
 //    fun test_comeback() {
-//        val order = Order()
+//        val order = ru.easycode.zerotoheroandroidtdd.Order()
 //        val repository = FakeAddRepository.Base(order)
 //        val liveDataWrapper = FakeAddLiveDataWrapper.Base(order)
 //        val clear = FakeClearViewModel.Base(order)
@@ -53,25 +53,25 @@
 //        order.checkCallsList(listOf(CLEAR))
 //    }
 //}
-//
-//class Order {
-//
-//    private val list = mutableListOf<String>()
-//
-//    fun add(value: String) {
-//        list.add(value)
-//    }
-//
-//    fun checkCallsList(expected: List<String>) {
-//        assertEquals(expected, list)
-//    }
-//}
+
+class Order {
+
+    private val list = mutableListOf<String>()
+
+    fun add(value: String) {
+        list.add(value)
+    }
+
+    fun checkCallsList(expected: List<String>) {
+        assertEquals(expected, list)
+    }
+}
 //
 //private interface FakeAddLiveDataWrapper : ListLiveDataWrapper.Add {
 //
 //    fun checkAddCalled(expected: ItemUi)
 //
-//    class Base(private val order: Order) : FakeAddLiveDataWrapper {
+//    class Base(private val order:Order) : FakeAddLiveDataWrapper {
 //
 //        private var actual = ItemUi(Long.MIN_VALUE, "")
 //
@@ -90,7 +90,7 @@
 //
 //    fun checkAddCalled(expected: String)
 //
-//    class Base(private val order: Order) : FakeAddRepository {
+//    class Base(private val order: ru.easycode.zerotoheroandroidtdd.Order) : FakeAddRepository {
 //
 //        private var actual = ""
 //        private var count = 10L

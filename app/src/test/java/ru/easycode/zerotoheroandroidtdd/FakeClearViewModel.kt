@@ -11,7 +11,7 @@
 //
 //    fun checkClearCalled(expected: Class<out ViewModel>)
 //
-//    class Base(private val order: Order = Order()) : FakeClearViewModel {
+//    class Base(private val order: ru.easycode.zerotoheroandroidtdd.Order = ru.easycode.zerotoheroandroidtdd.Order()) : FakeClearViewModel {
 //
 //        private lateinit var actual: Class<out ViewModel>
 //

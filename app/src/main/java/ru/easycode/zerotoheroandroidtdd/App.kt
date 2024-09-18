@@ -7,7 +7,6 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        val core = Core.Base(applicationContext)
-
+        val db = Core.Base(applicationContext).build()
     }
 }

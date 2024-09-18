@@ -15,7 +15,7 @@
 //    @get:Rule
 //    val rule = InstantTaskExecutorRule()
 //
-//    private lateinit var order: Order
+//    private lateinit var order: ru.easycode.zerotoheroandroidtdd.Order
 //    private lateinit var liveDataWrapper: FakeListLiveDataWrapper
 //    private lateinit var repository: FakeRepositoryDelete
 //    private lateinit var clear: FakeClearViewModel
@@ -23,7 +23,7 @@
 //
 //    @Before
 //    fun setup() {
-//        order = Order()
+//        order = ru.easycode.zerotoheroandroidtdd.Order()
 //        liveDataWrapper = FakeListLiveDataWrapper.Base(order)
 //        repository = FakeRepositoryDelete.Base(order)
 //        clear = FakeClearViewModel.Base(order)
@@ -69,7 +69,7 @@
 //
 //    fun checkDeleteCalled(id: Long)
 //
-//    class Base(private val order: Order = Order()) : FakeRepositoryDelete {
+//    class Base(private val order: ru.easycode.zerotoheroandroidtdd.Order = ru.easycode.zerotoheroandroidtdd.Order()) : FakeRepositoryDelete {
 //
 //        private var actualId: Long = Long.MIN_VALUE
 //

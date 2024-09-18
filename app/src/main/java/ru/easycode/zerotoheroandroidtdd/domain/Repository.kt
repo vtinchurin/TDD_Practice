@@ -8,7 +8,7 @@ interface Repository {
     }
 
     interface Add {
-        fun add(value: String)
+        fun add(value: String): Long
     }
 
     interface Delete {

@@ -1,9 +1,11 @@
 package ru.easycode.zerotoheroandroidtdd
 
+import ru.easycode.zerotoheroandroidtdd.domain.Item
+
 interface ListLiveDataWrapper {
 
-    interface Add<T : Any> {
-        fun add(value: T)
+    interface Add {
+        fun add(value: ItemUi)
     }
 
     interface Update : LiveDataWrapper.Update<List<ItemUi>>
@@ -15,7 +17,7 @@ interface ListLiveDataWrapper {
     interface Read : LiveDataWrapper.Read<List<ItemUi>>
 
 
-    interface All : Update, Read, Add<ItemUi>, Delete<ItemUi>
+    interface All : Update, Read, Add, Delete<ItemUi>
 
 
     class Base : All, LiveDataWrapper.Abstract<List<ItemUi>>() {
@@ -36,4 +38,12 @@ interface ListLiveDataWrapper {
 
 }
 
-interface ItemUi
+data class ItemUi(
+    private val id: Long,
+    private val text: String,
+) : Item {
+
+    override fun <T : Item> map(mapper: Item.Mapper<T>): T {
+        return mapper.map(id, text)
+    }
+}

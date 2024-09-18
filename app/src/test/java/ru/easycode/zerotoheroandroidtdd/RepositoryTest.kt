@@ -8,6 +8,7 @@ import ru.easycode.zerotoheroandroidtdd.data.ItemCache
 import ru.easycode.zerotoheroandroidtdd.data.ItemsDao
 import ru.easycode.zerotoheroandroidtdd.data.Now
 import ru.easycode.zerotoheroandroidtdd.domain.Item
+import ru.easycode.zerotoheroandroidtdd.domain.ItemDomain
 import ru.easycode.zerotoheroandroidtdd.domain.Repository
 
 class RepositoryTest {
@@ -33,7 +34,7 @@ class RepositoryTest {
         )
 
         val actual: List<Item> = repository.list()
-        val expected = listOf(Item(0, "first"), Item(1, "second"))
+        val expected = listOf(ItemDomain(0, "first"), ItemDomain(1, "second"))
         assertEquals(expected, actual)
 
         repository.add(value = "third")
@@ -52,7 +53,7 @@ class RepositoryTest {
         dataSource.checkList(listOf(ItemCache(id = 7778L, text = "first")))
 
         val actual: Item = repository.item(id = 7778L)
-        val expected = Item(id = 7778L, text = "first")
+        val expected = ItemDomain(id = 7778L, text = "first")
         assertEquals(expected, actual)
     }
 

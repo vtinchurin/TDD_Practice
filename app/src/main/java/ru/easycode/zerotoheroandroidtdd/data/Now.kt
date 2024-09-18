@@ -5,7 +5,7 @@ interface Now {
 
     class Base : Now {
         override fun nowMillis(): Long {
-            //todo
+            return System.currentTimeMillis()
         }
     }
 }

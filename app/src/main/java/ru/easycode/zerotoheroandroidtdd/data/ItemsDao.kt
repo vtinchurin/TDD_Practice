@@ -1,25 +1,23 @@
 package ru.easycode.zerotoheroandroidtdd.data
 
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
 
-interface Read {
+
+@Dao
+interface ItemsDao {
+
+    @Query("SELECT * FROM items")
     fun list(): List<ItemCache>
-}
 
-interface Add {
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun add(item: ItemCache)
-}
 
-interface Delete {
+    @Query("DELETE FROM items WHERE id = :id")
     fun delete(id: Long)
-}
 
-interface Items {
+    @Query("SELECT * FROM items WHERE id = :id")
     fun item(id: Long): ItemCache
-}
-
-interface All : Read, Add, Delete, Items
-
-
-interface ItemsDao : All {
-
 }

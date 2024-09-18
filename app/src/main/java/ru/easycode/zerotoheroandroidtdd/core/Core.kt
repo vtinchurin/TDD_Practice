@@ -6,13 +6,13 @@ import ru.easycode.zerotoheroandroidtdd.data.ItemsDataBase
 
 interface Core {
 
-    class Base(context: Context) : Core {
+    class Base(private val context: Context) : Core {
 
-        val db = Room.inMemoryDatabaseBuilder(context, ItemsDataBase::class.java)
-            .allowMainThreadQueries()
-            .build()
-
-        val dao = db.itemsDao()
-
+        fun build(): ItemsDataBase {
+            val db = Room.inMemoryDatabaseBuilder(context, ItemsDataBase::class.java)
+                .allowMainThreadQueries()
+                .build()
+            return db
+        }
     }
 }
