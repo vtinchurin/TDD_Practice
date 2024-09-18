@@ -3,6 +3,12 @@ package ru.easycode.zerotoheroandroidtdd
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
+import ru.easycode.zerotoheroandroidtdd.data.Base
+import ru.easycode.zerotoheroandroidtdd.data.ItemCache
+import ru.easycode.zerotoheroandroidtdd.data.ItemsDao
+import ru.easycode.zerotoheroandroidtdd.data.Now
+import ru.easycode.zerotoheroandroidtdd.domain.Item
+import ru.easycode.zerotoheroandroidtdd.domain.Repository
 
 class RepositoryTest {
 
@@ -14,7 +20,7 @@ class RepositoryTest {
     fun setup() {
         now = FakeNow.Base(7777L)
         dataSource = FakeDataSource.Base()
-        repository = Repository.Base(dataSource = dataSource, now = now)
+        repository = Base(dataSource = dataSource, now = now)
     }
 
     @Test
