@@ -18,26 +18,8 @@ interface Items {
 }
 
 interface All : Read, Add, Delete, Items
+
+
 interface ItemsDao : All {
 
-    class Base : ItemsDao {
-
-        private val list = mutableListOf<ItemCache>()
-
-        override fun list(): List<ItemCache> {
-            return list
-        }
-
-        override fun add(item: ItemCache) {
-            list.add(item)
-        }
-
-        override fun delete(id: Long) {
-            list.remove(item(id))
-        }
-
-        override fun item(id: Long): ItemCache {
-            return list.find { it.id == id }!!
-        }
-    }
 }
