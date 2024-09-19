@@ -3,6 +3,7 @@ package ru.easycode.zerotoheroandroidtdd
 import kotlinx.coroutines.Dispatchers
 import org.junit.Test
 import ru.easycode.zerotoheroandroidtdd.domain.Item
+import ru.easycode.zerotoheroandroidtdd.domain.ItemDomain
 import ru.easycode.zerotoheroandroidtdd.domain.Repository
 
 class MainViewModelTest {
@@ -17,7 +18,12 @@ class MainViewModelTest {
             dispatcherMain = Dispatchers.Unconfined
         )
 
-        repository.expectList(listOf(Item(id = 0L, text = "1"), Item(id = 1L, text = "2")))
+        repository.expectList(
+            listOf(
+                ItemDomain(id = 0L, text = "1"),
+                ItemDomain(id = 1L, text = "2")
+            )
+        )
 
         viewModel.init()
 
